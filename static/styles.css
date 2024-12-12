@@ -1,0 +1,137 @@
+/* Body Gradient */
+body {
+  background: #136a8a;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #267871, #136a8a);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #267871, #136a8a); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/* Custom button style */
+.custom-btn {
+  border: 2px solid transparent;  /* Default border */
+  border-color: #136a8a;
+  color: #136a8a; /* Text color to match the border */
+  background-color: transparent;  /* Transparent background */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;  /* Rounded corners */
+  padding: 10px 20px;  /* Add padding for better button appearance */
+}
+
+/* Hover state: Image grows and background changes */
+.custom-btn:hover, 
+.custom-btn:focus {
+  background-color: #1d96c2;  /* Background matches the gradient */
+  color: white;  /* White text color */
+}
+
+/* When Button is Checked */
+.btn-check:checked + .custom-btn {
+  background-color: #177293; /* Background matches the gradient */
+  color: white; /* White text color */
+}
+
+.mood-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px; /* Space between mood items */
+  margin: 20px 0;
+}
+
+.mood-item {
+  display: flex;
+  flex-direction: column; /* Stack image and text vertically */
+  align-items: center; /* Center-align image and text */
+  cursor: pointer; /* Add a pointer cursor to indicate it's clickable */
+}
+
+/* Label styling for mood */
+.mood-label {
+  margin-top: 10px; /* Add space between the image and text */
+  font-size: 18px; /* Adjust text size */
+  text-align: center; /* Center-align the text */
+  font-weight: bold; /* Optional: Make the text bold */
+}
+
+/* Custom colors for each mood */
+.excellent-text {
+  color: #4CAF50; /* Green for Excellent */
+}
+
+.good-text {
+  color: #8BC34A; /* Light green for Good */
+}
+
+.okay-text {
+  color: #FFC107; /* Yellow for Okay */
+}
+
+.bad-text {
+  color: #FF5722; /* Orange for Bad */
+}
+
+.very-bad-text {
+  color: #F44336; /* Red for Very Bad */
+}
+
+.mood-icon {
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  transition: background-color 0.3s, transform 0.3s, border 0.3s;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  display: inline-block;
+  cursor: pointer; /* Ensure the icons appear clickable */
+}
+
+/* Hover state for each mood icon */
+.excellent:hover {
+  background-color: rgba(87, 185, 82, 1); /* Green for excellent mood */
+  transform: scale(1.1);
+}
+
+.good:hover {
+  background-color: rgba(124, 215, 88, 1); /* Light green for good mood */
+  transform: scale(1.1);
+}
+
+.okay:hover {
+  background-color: rgba(245, 203, 66, 1); /* Yellow for okay mood */
+  transform: scale(1.1);
+}
+
+.bad:hover {
+  background-color: rgba(242, 140, 45, 1); /* Orange for bad mood */
+  transform: scale(1.1);
+}
+
+.very-bad:hover {
+  background-color: rgba(231, 76, 60, 1); /* Red for very bad mood */
+  transform: scale(1.1);
+}
+
+/* Persisting selected state for each mood */
+.mood-item.selected .mood-icon.excellent {
+  background-color: rgba(87, 185, 82, 1); /* Green persists */
+  transform: scale(1.2); /* Slightly larger icon */
+}
+
+.mood-item.selected .mood-icon.good {
+  background-color: rgba(124, 215, 88, 1); /* Light green persists */
+  transform: scale(1.2);
+}
+
+.mood-item.selected .mood-icon.okay {
+  background-color: rgba(245, 203, 66, 1); /* Yellow persists */
+  transform: scale(1.2);
+}
+
+.mood-item.selected .mood-icon.bad {
+  background-color: rgba(242, 140, 45, 1); /* Orange persists */
+  transform: scale(1.2);
+}
+
+.mood-item.selected .mood-icon.very-bad {
+  background-color: rgba(231, 76, 60, 1); /* Red persists */
+  transform: scale(1.2);
+}
