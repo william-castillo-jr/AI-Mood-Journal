@@ -1,17 +1,21 @@
 import sqlite3
 
+# Connect to the SQLite database
 conn = sqlite3.connect('journal_entries.db')
-
 cursor = conn.cursor()
 
+# Drop the old table if it exists (this will delete all data)
+cursor.execute('DROP TABLE IF EXISTS journal_entries')
+
+# Now create the table again with the correct schema
 cursor.execute('''
-CREATE TABLE journal_entries (
-	entry_id INT PRIMARY KEY NOT NULL,
-	journal_entry TEXT,
-	entry_date DATE,
-	sentiment_id INT,
-	FOREIGN KEY (sentiment_id) REFERENCES sentiment_data (sentiment_id)
-); 
+    CREATE TABLE journal_entries (
+        entry_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        journal_entry TEXT NOT NULL,
+        entry_date DATE DEFAULT (DATE('now')),
+        sentiment_id INTEGER,
+		category VARCHAR(50)
+    )
 ''')
 
 cursor.execute('''
