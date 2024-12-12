@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Card -->
+        <form action="/process_form" method="POST">
+        <div class="card shadow-lg border border-light-subtle border-2" 
+        style="max-width: 650px; margin: auto;">
+
+        <img src="{{ url_for('static', filename='info-icon.png') }}" style="width: 30px; margin-left: 20px; margin-top: 20px">
+          <div class="card-headertext-white text-center">
+            <h4>How are you feeling today?</h4>
+          </div>
+          <div class="card-body">
+            <!-- Mood Icons -->
+            <div class="mood-container">
+              <div class="mood-item" value="6">
+                <img src="{{ url_for('static', filename='excellent-mood-icon.png') }}"  
+                     class="img-fluid mood-icon excellent" alt="Excellent Mood">
+                <p class="mood-label excellent-text">Excellent</p>
+              </div>
+              <div class="mood-item" value="4">
+                <img src="{{ url_for('static', filename='good-mood-icon.png') }}"  
+                     class="img-fluid mood-icon good" alt="Good Mood">
+                <p class="mood-label good-text">Good</p>
+              </div>
+              <div class="mood-item" value="3">
+                <img src="{{ url_for('static', filename='okay-mood-icon.png') }}"  
+                     class="img-fluid mood-icon okay" alt="Okay Mood">
+                <p class="mood-label okay-text">Okay</p>
+              </div>
+              <div class="mood-item" value="2">
+                <img src="{{ url_for('static', filename='bad-mood-icon.png') }}"  
+                     class="img-fluid mood-icon bad" alt="Bad Mood">
+                <p class="mood-label bad-text">Bad</p>
+              </div>
+              <div class="mood-item" value="1">
+                <img src="{{ url_for('static', filename='very-bad-mood-icon.png') }}"  
+                     class="img-fluid mood-icon very-bad" alt="Very Bad Mood">
+                <p class="mood-label very-bad-text">Very Bad</p>
+              </div>
+            </div>
+          
+            <!-- Hidden input field to store the selected value -->
+            <input type="hidden" id="selected-mood" name="mood_value">
+
+            <h4 class="card-headertext-white text-center pb-3">What is having the biggest impact on you?</h4>
+        
+              <div class="pb-3 text-center">
+                <input type="checkbox" class="btn-check" id="work" name="category" autocomplete="off" value="Work">
+                <label class="custom-btn w-25 fs-5" for="work">Work</label>
+              
+                <input type="checkbox" class="btn-check" id="education" name="category" autocomplete="off" value="Education">
+                <label class="custom-btn w-25 fs-5" for="education">Education</label>
+              
+                <input type="checkbox" class="btn-check" id="hobbies" name="category" autocomplete="off" value="Hobbies">
+                <label class="custom-btn w-25 fs-5" for="hobbies">Hobbies</label>
+              </div>
+              
+              <div class="pb-3 text-center">
+                <input type="checkbox" class="btn-check" id="relationship" name="category" autocomplete="off" value="Relationship">
+                <label class="custom-btn w-25 fs-5" for="relationship">Relationship</label>
+              
+                <input type="checkbox" class="btn-check" id="family" name="category" autocomplete="off" value="Family">
+                <label class="custom-btn w-25 fs-5" for="family">Family</label>
+              
+                <input type="checkbox" class="btn-check" id="self-care" name="category" autocomplete="off" value="Self-Care">
+                <label class="custom-btn w-25 fs-5" for="self-care">Self-Care</label>
+              </div>
+
+        <!-- Center the form-floating/textarea -->
+        <h4 class="card-headertext-white text-center pt-4">Provide more details</h4>
+        <div class="d-flex justify-content-center pt-3 pb-3">
+            <div class="form-floating mb-3" style="width: 80%;">
+              <textarea class="form-control" placeholder="Leave a comment here" name="journal-entry" id="journal-entry" style="height: 200px;"></textarea>
+              <label for="journal-entry"></label>
+            </div>
+          </div>
+          <div class="pb-3 text-center">
+            <button type="submit" class="btn btn-secondary fs-5 log-entry-button" style="width: 500px">Log entry</button>
+          </div>
+          <p style="font-size: 100">
+            </form>
+          </div>
+        </div>
+      </div>
+</body>
+
+<script>
+// Get all mood items (divs containing images)
+const moodItems = document.querySelectorAll('.mood-item');
+
+// Add click event listener to each mood item
+moodItems.forEach(item => {
+  item.addEventListener('click', function() {
+    // Remove the 'selected' class from all items
+    moodItems.forEach(i => i.classList.remove('selected'));
+    
+    // Add the 'selected' class to the clicked item
+    item.classList.add('selected');
+    
+    // Get the value of the clicked item (mood)
+    const moodValue = item.getAttribute('value');
+    
+    // Set the value in the hidden input field
+    const selectedMoodInput = document.getElementById('selected-mood');
+    selectedMoodInput.value = moodValue;
+    
+    console.log('Selected mood:', moodValue);
+  });
+});
+</script>
+
+</html>
+
