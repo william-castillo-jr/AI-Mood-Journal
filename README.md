@@ -33,10 +33,10 @@ As someone passionate about mood tracking, I’ve personally benefited from moni
 
 ## 🛠️ Technology Stack
 
-- **Frontend**:
-- **Backend**:
-- **AI/Sentiment Analysis**:
-- **Database**:
+- **Frontend**: HTML, CSS (Bootstrap), JavaScript
+- **Backend**: Python (Flask)
+- **AI/Sentiment Analysis**: OpenAI's GPT-4 model
+- **Database**: SQLite3
 
 ## 📊 Learning Objectives
 
