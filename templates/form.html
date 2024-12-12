@@ -9,12 +9,13 @@
 </head>
 <body>
     <div class="container mt-5">
-        <!-- Card -->
+        <!-- Form Start - Card -->
         <form action="/process_form" method="POST">
         <div class="card shadow-lg border border-light-subtle border-2" 
         style="max-width: 650px; margin: auto;">
-
+        
         <img src="{{ url_for('static', filename='info-icon.png') }}" style="width: 30px; margin-left: 20px; margin-top: 20px">
+        <!-- Section 1: User Mood -->
           <div class="card-headertext-white text-center">
             <h4>How are you feeling today?</h4>
           </div>
@@ -51,6 +52,7 @@
             <!-- Hidden input field to store the selected value -->
             <input type="hidden" id="selected-mood" name="mood_value">
 
+            <!-- Section 2: Categories -->
             <h4 class="card-headertext-white text-center pb-3">What is having the biggest impact on you?</h4>
         
               <div class="pb-3 text-center">
@@ -75,8 +77,8 @@
                 <label class="custom-btn w-25 fs-5" for="self-care">Self-Care</label>
               </div>
 
-        <!-- Center the form-floating/textarea -->
-        <h4 class="card-headertext-white text-center pt-4">Provide more details</h4>
+        <!-- Section 3: Textarea -->
+        <h4 class="card-headertext-white text-center pt-4">Tell us more about your day</h4>
         <div class="d-flex justify-content-center pt-3 pb-3">
             <div class="form-floating mb-3" style="width: 80%;">
               <textarea class="form-control" placeholder="Leave a comment here" name="journal-entry" id="journal-entry" style="height: 200px;"></textarea>
@@ -86,7 +88,6 @@
           <div class="pb-3 text-center">
             <button type="submit" class="btn btn-secondary fs-5 log-entry-button" style="width: 500px">Log entry</button>
           </div>
-          <p style="font-size: 100">
             </form>
           </div>
         </div>
@@ -94,28 +95,28 @@
 </body>
 
 <script>
-// Get all mood items (divs containing images)
-const moodItems = document.querySelectorAll('.mood-item');
+// Get all mood items
+  const moodItems = document.querySelectorAll('.mood-item');
 
-// Add click event listener to each mood item
-moodItems.forEach(item => {
-  item.addEventListener('click', function() {
-    // Remove the 'selected' class from all items
-    moodItems.forEach(i => i.classList.remove('selected'));
-    
-    // Add the 'selected' class to the clicked item
-    item.classList.add('selected');
-    
-    // Get the value of the clicked item (mood)
-    const moodValue = item.getAttribute('value');
-    
-    // Set the value in the hidden input field
-    const selectedMoodInput = document.getElementById('selected-mood');
-    selectedMoodInput.value = moodValue;
-    
-    console.log('Selected mood:', moodValue);
+  // Event listener to each mood item
+  moodItems.forEach(item => {
+    item.addEventListener('click', function() {
+      // Remove the 'selected' class from all items
+      moodItems.forEach(i => i.classList.remove('selected'));
+      
+      // Add the 'selected' class to the clicked item
+      item.classList.add('selected');
+      
+      // Get the value of the clicked item
+      const moodValue = item.getAttribute('value');
+      
+      // Set the value (mood) in the hidden input field
+      const selectedMoodInput = document.getElementById('selected-mood');
+      selectedMoodInput.value = moodValue;
+      
+      console.log('Selected mood:', moodValue);
+    });
   });
-});
 </script>
 
 </html>
